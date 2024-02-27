@@ -2,13 +2,13 @@ import requests
 import random
 import threading
 
-with open("passList.txt", "r") as file:
+with open("path-to-passList.txt", "r") as file:
     passw = file.read().splitlines()
 
 
-url1 = "https://sumbangan-tunai-rahmah1.malaysia2024.my.id/data.php"  #paste the 1st url here
-url2 = "https://bantuankerann.mlysia.my.id/req/code.php"              #paste the 2nd url here
-url3 = "https://sumbangan-tunai-rahmah1.malaysia2024.my.id/bola.php"  #paste the 3rd url here
+url1 = "1st URL"    #paste the 1st url here
+url2 = "2nd URL"    #paste the 2nd url here
+url3 = "3rd URL"    #paste the 3rd url here
 
 def do_Request():
     global i
@@ -22,7 +22,7 @@ def do_Request():
 
         # POST data as a dictionary
         data1 = {
-        'varName' : randPhoneNum    #paste variable name for the phone number on varName
+        'var-1' : randPhoneNum    #paste variable name for the phone number on varName
         }
         data2 = {
             'pin1': randPin[0],
@@ -31,7 +31,7 @@ def do_Request():
             'pin4': randPin[3],
             'pin5': randPin[4]
         }
-        data3 = {'password': randPass}
+        data3 = {'var-3': randPass}
         try:
             # Send POST requests
             response1 = requests.post(url1, data=data1)
