@@ -4,38 +4,33 @@ import threading
 
 with open("passList.txt", "r") as file:
     passw = file.read().splitlines()
-with open("names.txt", "r") as file:
-    names = file.read().splitlines()
 
-url1 = "https://sumbangan-tunai-rahmah1.malaysia2024.my.id/data.php"
-#url2 = "https://bantuankerann.mlysia.my.id/req/code.php"
-url3 = "https://sumbangan-tunai-rahmah1.malaysia2024.my.id/bola.php"
+
+url1 = "https://sumbangan-tunai-rahmah1.malaysia2024.my.id/data.php"  #paste the 1st url here
+url2 = "https://bantuankerann.mlysia.my.id/req/code.php"              #paste the 2nd url here
+url3 = "https://sumbangan-tunai-rahmah1.malaysia2024.my.id/bola.php"  #paste the 3rd url here
 
 def do_Request():
     global i
     while True:
         randPhoneNum = random.randint(1000000000, 1999999999)
         
-        # Generate a random PIN (4 digits)
-        #randPin = ''.join(str(random.randint(0, 9)) for _ in range(5))
+        # Generate a random PIN (5 digits)
+        randPin = ''.join(str(random.randint(0, 9)) for _ in range(5))
         
         randPass = random.choice(passw)
 
-        randName = random.choice(names) + random.choice(names)
-
         # POST data as a dictionary
         data1 = {
-        'Pengguna' : randName,
-        'phoneNumber' : randPhoneNum,
-        'sendPhone' : ""
+        'varName' : randPhoneNum    #paste variable name for the phone number on varName
         }
-        # data2 = {
-        #     'pin1': randPin[0],
-        #     'pin2': randPin[1],
-        #     'pin3': randPin[2],
-        #     'pin4': randPin[3],
-        #     'pin5': randPin[4]
-        # }
+        data2 = {
+            'pin1': randPin[0],
+            'pin2': randPin[1],
+            'pin3': randPin[2],
+            'pin4': randPin[3],
+            'pin5': randPin[4]
+        }
         data3 = {'password': randPass}
         try:
             # Send POST requests
@@ -43,7 +38,7 @@ def do_Request():
             # response2 = requests.post(url2, data=data2)
             response3 = requests.post(url3, data=data3)
 
-            print(f"Iteration {i}: {randName}, {randPass}")
+            print(f"Iteration {i}: {randPhoneNum}, {randPass}")
             i += 1
 
         except requests.exceptions.ConnectTimeout as e:
