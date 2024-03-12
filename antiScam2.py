@@ -2,6 +2,7 @@ import requests
 import random
 import threading
 
+#password is generated from passList.txt
 with open("path-to-passList.txt", "r") as file:
     passw = file.read().splitlines()
 
@@ -22,16 +23,17 @@ def do_Request():
 
         # POST data as a dictionary
         data1 = {
-        'var-1' : randPhoneNum    #paste variable name for the phone number on varName
+        'PHONENUM' : randPhoneNum       #Phone Number
         }
         data2 = {
-            'pin1': randPin[0],
-            'pin2': randPin[1],
-            'pin3': randPin[2],
-            'pin4': randPin[3],
-            'pin5': randPin[4]
+            'pin1': randPin[0],         #pin1
+            'pin2': randPin[1],         #pin2
+            'pin3': randPin[2],         #pin3
+            'pin4': randPin[3],         #pin4
+            'pin5': randPin[4]          #pin5
         }
-        data3 = {'var-3': randPass}
+        data3 = {'PASSWORD': randPass}  #Password
+        
         try:
             # Send POST requests
             response1 = requests.post(url1, data=data1)
